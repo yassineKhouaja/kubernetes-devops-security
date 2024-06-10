@@ -13,12 +13,12 @@ pipeline {
       //         sh "mvn test"
       //       }
       //   }
-      stage( 'Docker Build and Push') {
+      stage('Docker Build and Push') {
         steps {
-          withDockerRegistry([credentialsId: 'dockerhub', url: ""]) {
+          withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t yassinekhouaja/numeric-app:""$GIT _COMMIT"" .'
-          sh 'docker push yassinekhouaja/numeric-app:""$GIT _COMMIT""'
+          sh 'docker build -t yassinekhouaja/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push yassinekhouaja/numeric-app:""$GIT_COMMIT""'
           }
         }
       }   
